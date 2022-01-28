@@ -1,0 +1,17 @@
+# Ignorando pasta node_modules
+node_modules/
+
+# Ignorando logs
+logs
+*.log
+
+# Ignorando compilação
+/dist
+
+# Ignorando variaveis de ambiente
+.env
+
+# Ignorando arquivos da IDE
+.idea/
+.vscode/
+*.sw*
