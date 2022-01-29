@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const res = require('express/lib/response');
-const { append } = require('express/lib/response');
 const Person = require('../models/Person');
 
 router.post('/', async (req, res) =>{
@@ -70,6 +68,56 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({message: error})
     }
+})
+
+router.patch('/:id', async (req, res) => {
+    
+    const id = req.params.id
+
+    const { nomeCompleto, dataNascimento, tipoEsporte, localidadeCidade, cadastroConcluido, cadastroExcluido} = req.body
+    
+    const people = {
+        nomeCompleto,
+        dataNascimento,
+        tipoEsporte,
+        localidadeCidade,
+        cadastroConcluido,
+        cadastroExcluido
+    }
+
+    try {
+        const updatePeople = await Person.updateOne({_id: id}, people)
+
+        if(updatePeople.matchedCount === 0){
+            res.status(422).json({ message: 'O usuário não foi encontrado!' })
+            return
+        }
+
+        res.status(200).json(people)
+
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+
+})
+
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id
+
+    const people = await Person.findOne({_id: id})
+
+        if(!people) {
+            res.status(422).json({ message: 'O usuário não foi encontrado!' })
+            return
+        }
+
+    try {
+        await Person.deleteOne({_id: id})
+        res.status(200).json({message: 'O usuário foi excluído com sucesso!'})
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+
 })
 
 module.exports = router

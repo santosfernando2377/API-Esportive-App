@@ -1,4 +1,5 @@
 // Importando as dependencias
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -31,8 +32,8 @@ app.use('/person', personRoutes)
 
 // Conectadno com banco de dados
 
-const userDB = 'santosfernando2377'
-const passDB = encodeURIComponent('34778929')
+const userDB = process.env.userDB
+const passDB = encodeURIComponent(process.env.passDB)
 
 mongoose.connect(`mongodb+srv://${userDB}:${passDB}@esportiveapp.u6xqr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 .then(() =>{
