@@ -15,7 +15,7 @@ app.use(express.json())
 
 // Endpoint
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.json({
         message: {
             Nome: 'API Esportive App',
@@ -26,9 +26,11 @@ app.get('/', (req, res) => {
 
 // Rotas
 
-const personRoutes = require('./Routes/personRoutes')
+const personRoutes = require("./Routes/personRoutes")
+const eventRoutes =  require("./Routes/eventRoutes")
 
 app.use('/person', personRoutes)
+app.use('/event', eventRoutes)
 
 // Conectadno com banco de dados
 
