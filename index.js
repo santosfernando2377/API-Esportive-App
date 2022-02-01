@@ -36,11 +36,13 @@ app.use('/event', eventRoutes)
 
 const userDB = process.env.userDB
 const passDB = encodeURIComponent(process.env.passDB)
+const port = process.env.PORT || 3000
 
 mongoose.connect(`mongodb+srv://${userDB}:${passDB}@esportiveapp.u6xqr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 .then(() =>{
     console.log("Conectamos com o MongoDB");
-    app.listen( process.env.PORT || 3000 );
+    app.listen( port );
+    console.log(port);
 })
 .catch((err) => {
     console.log(err);
