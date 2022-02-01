@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     res.json({
         message: {
             Nome: 'API Esportive App',
-            Documentacao: 'xxx'
+            Documentacao: 'https://documenter.getpostman.com/view/18058659/UVeDs7Ye'
         }
     })  
 })
