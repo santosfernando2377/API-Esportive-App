@@ -40,7 +40,7 @@ const passDB = encodeURIComponent(process.env.passDB)
 mongoose.connect(`mongodb+srv://${userDB}:${passDB}@esportiveapp.u6xqr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 .then(() =>{
     console.log("Conectamos com o MongoDB");
-    app.listen(3000 || process.env.PORT );
+    app.listen( process.env.PORT || 3000 );
 })
 .catch((err) => {
     console.log(err);
