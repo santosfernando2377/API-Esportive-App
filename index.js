@@ -42,7 +42,6 @@ mongoose.connect(`mongodb+srv://${userDB}:${passDB}@esportiveapp.u6xqr.mongodb.n
 .then(() =>{
     console.log("Conectamos com o MongoDB");
     app.listen( port );
-    console.log(port);
 })
 .catch((err) => {
     console.log(err);
