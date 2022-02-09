@@ -28,9 +28,11 @@ app.get("/", (req, res) => {
 
 const personRoutes = require("./Routes/personRoutes")
 const eventRoutes =  require("./Routes/eventRoutes")
+const authRoutes = require("./Routes/auth")
 
 app.use('/person', personRoutes)
 app.use('/event', eventRoutes)
+app.use('/auth', authRoutes)
 
 // Conectadno com banco de dados
 
