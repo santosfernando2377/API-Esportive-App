@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Person = require("../models/Person");
 
 router.post('/', async (req, res) =>{
-    const { nomeCompleto, dataNascimento, tipoEsporte, localidadeCidade, cadastroConcluido, cadastroExcluido} = req.body
+    const { nomeCompleto, dataNascimento, tipoEsporte, localidadeCidade, acessoEmail, acessoSenha, cadastroConcluido, cadastroExcluido} = req.body
 
 
     // Validação dos campos
@@ -30,6 +30,8 @@ router.post('/', async (req, res) =>{
         nomeCompleto,
         dataNascimento,
         tipoEsporte,
+        acessoEmail,
+        acessoSenha,
         localidadeCidade,
         cadastroConcluido,
         cadastroExcluido
@@ -74,13 +76,15 @@ router.patch('/:id', async (req, res) => {
     
     const id = req.params.id
 
-    const { nomeCompleto, dataNascimento, tipoEsporte, localidadeCidade, cadastroConcluido, cadastroExcluido} = req.body
+    const { nomeCompleto, dataNascimento, tipoEsporte, localidadeCidade, acessoEmail, acessoSenha, cadastroConcluido, cadastroExcluido} = req.body
     
     const people = {
         nomeCompleto,
         dataNascimento,
         tipoEsporte,
         localidadeCidade,
+        acessoEmail,
+        acessoSenha,
         cadastroConcluido,
         cadastroExcluido
     }
