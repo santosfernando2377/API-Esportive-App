@@ -25,6 +25,14 @@ router.post('/', async (req, res) =>{
         res.status(422).json({ message: 'O campo localidade é obrigatório!'})
         return
     }
+
+    if(!acessoEmail) {
+        res.status(422).json({ message: 'O campo email é obrigatório'})
+    }
+
+    if(!acessoSenha) {
+        res.status(422).json({ message: 'O campo senha é obirgatório'})
+    }
     
     const person = {
         nomeCompleto,
