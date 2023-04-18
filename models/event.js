@@ -1,13 +1,11 @@
 import mongoose from "mongoose";
 
 const Event = mongoose.model('Event', {
-    nomeEvento: String,
-    descricaoEvento: String,
-    dataEvento: String,
-    horaEvento: String,
-    localidadeEvento: String,
-    tipoEsporteEvento: String,
-    concluidoEvento: Boolean
+    nome: String,
+    descricao: String,
+    data: Date,
+    hora: Date,
+    localidade: String,
 })
 
 export default Event
