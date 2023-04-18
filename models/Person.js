@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const Person = mongoose.model('Person', {
     nomeCompleto: String,
@@ -11,4 +11,4 @@ const Person = mongoose.model('Person', {
     cadastroExcluido: Boolean,
 })
 
-module.exports = Person
+export default Person

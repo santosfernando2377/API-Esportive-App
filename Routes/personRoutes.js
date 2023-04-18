@@ -1,5 +1,9 @@
-const router = require("express").Router();
-const Person = require("../models/Person");
+import express from "express";
+import Person from "../models/Person.js";
+//const router = require("express").Router();
+//const Person = require("../models/Person");
+
+const router = express.Router();
 
 router.post('/', async (req, res) =>{
     const { nomeCompleto, dataNascimento, tipoEsporte, localidadeCidade, acessoEmail, acessoSenha, cadastroConcluido, cadastroExcluido} = req.body
@@ -132,4 +136,4 @@ router.delete('/:id', async (req, res) => {
 
 })
 
-module.exports = router
+export default router

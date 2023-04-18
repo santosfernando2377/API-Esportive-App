@@ -1,4 +1,4 @@
-const mongoose =  require('mongoose');
+import mongoose from "mongoose";
 
 const Event = mongoose.model('Event', {
     nomeEvento: String,
@@ -10,4 +10,4 @@ const Event = mongoose.model('Event', {
     concluidoEvento: Boolean
 })
 
-module.exports = Event
+export default Event

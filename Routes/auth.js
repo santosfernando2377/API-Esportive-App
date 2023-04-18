@@ -1,5 +1,7 @@
-const router = require("express").Router()
-const Auth = require('../models/Person')
+import express from "express"
+import Auth from "../models/Person.js"
+
+const router = express.Router()
 
 router.post('/', async (req, res) => {
     
@@ -32,4 +34,4 @@ router.post('/', async (req, res) => {
     }
 })
 
-module.exports = router
+export default router
