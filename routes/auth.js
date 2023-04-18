@@ -1,5 +1,5 @@
 import express from "express"
-import Auth from "../models/Person.js"
+import Auth from "../models/people.js"
 
 const router = express.Router()
 

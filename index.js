@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 const app = express();
 
 env.config();
+
 // Forma de ler o json
 app.use(
     express.urlencoded({
@@ -16,11 +17,9 @@ app.use(express.json())
 
 // Rotas
 
-
-
-import personRoutes from "./Routes/personRoutes.js";
-import eventRoutes from "./Routes/eventRoutes.js";
-import authRoutes from "./Routes/auth.js";
+import personRoutes from "./routes/people.js";
+import eventRoutes from "./routes/event.js";
+import authRoutes from "./routes/auth.js";
 
 app.use('/person', personRoutes)
 app.use('/event', eventRoutes)

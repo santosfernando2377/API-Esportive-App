@@ -13,7 +13,8 @@
   "dependencies": {
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
-    "jsonwebtoken": "^8.5.1",
+    "helmet": "^6.1.5",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.1.8",
     "nodemon": "^2.0.15"
   }

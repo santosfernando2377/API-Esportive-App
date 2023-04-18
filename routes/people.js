@@ -1,5 +1,5 @@
 import express from "express";
-import Person from "../models/Person.js";
+import Person from "../models/people.js";
 //const router = require("express").Router();
 //const Person = require("../models/Person");
 
