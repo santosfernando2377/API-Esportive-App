@@ -17,7 +17,7 @@ app.use(
 app.use(express.json())
 
 import personRoutes from "./routes/people/index.js";
-import eventRoutes from "./routes/event.js";
+import eventRoutes from "./routes/event/index.js";
 
 app.use('/people', personRoutes)
 app.use('/event', eventRoutes)
@@ -27,8 +27,9 @@ const PASSDB = encodeURIComponent(process.env.PASSDB)
 const URLDB = process.env.URLDB
 const PORT = process.env.PORT || 3000
 
-mongoose.set('strictQuery', false).connect(`mongodb+srv://${USERDB}:${PASSDB}@${URLDB}/myFirstDatabase?retryWrites=true&w=majority`)
+mongoose.set('strictQuery', false).connect(`mongodb+srv://${USERDB}:${PASSDB}@${URLDB}/EventsDeveloperConference?retryWrites=true&w=majority`)
     .then(() => {
+        console.log('Conectado ao Banco de Dados')
         app.listen(PORT);
     })
     .catch((err) => {
