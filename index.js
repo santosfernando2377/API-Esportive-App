@@ -1,10 +1,13 @@
 // Importando as dependencias
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
+import env from "dotenv";
+import express from "express";
+import helmet from "helmet";
+import mongoose from "mongoose";
 const app = express();
 
-// Forma de ler o json
+env.config();
+app.use(helmet());
+
 app.use(
     express.urlencoded({
         extended: true,
@@ -13,38 +16,22 @@ app.use(
 
 app.use(express.json())
 
-// Endpoint
+import personRoutes from "./routes/people/index.js";
+import eventRoutes from "./routes/event/index.js";
 
-app.get("/", (req, res) => {
-    res.json({
-        message: {
-            Nome: 'API Esportive App',
-            Documentacao: 'https://documenter.getpostman.com/view/18058659/UVeDs7Ye'
-        }
-    })  
-})
-
-// Rotas
-
-const personRoutes = require("./Routes/personRoutes")
-const eventRoutes =  require("./Routes/eventRoutes")
-const authRoutes = require("./Routes/auth")
-
-app.use('/person', personRoutes)
+app.use('/people', personRoutes)
 app.use('/event', eventRoutes)
-app.use('/auth', authRoutes)
 
-// Conectadno com banco de dados
+const USERDB = process.env.USERDB
+const PASSDB = encodeURIComponent(process.env.PASSDB)
+const URLDB = process.env.URLDB
+const PORT = process.env.PORT || 3000
 
-const userDB = process.env.userDB
-const passDB = encodeURIComponent(process.env.passDB)
-const port = process.env.PORT || 3000
-
-mongoose.connect(`mongodb+srv://${userDB}:${passDB}@esportiveapp.u6xqr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
-.then(() =>{
-    console.log("Conectamos com o MongoDB");
-    app.listen( port );
-})
-.catch((err) => {
-    console.log(err);
-})
+mongoose.set('strictQuery', false).connect(`mongodb+srv://${USERDB}:${PASSDB}@${URLDB}/EventsDeveloperConference?retryWrites=true&w=majority`)
+    .then(() => {
+        console.log('Conectado ao Banco de Dados')
+        app.listen(PORT);
+    })
+    .catch((err) => {
+        throw err
+    })
